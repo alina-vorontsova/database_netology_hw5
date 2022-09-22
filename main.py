@@ -2,10 +2,10 @@ import json
 import sqlalchemy as sq
 from sqlalchemy.orm import sessionmaker
 from models import create_tables, Publisher, Book, Shop, Stock, Sale
-from database_connection import DSN
+from database_connection import get_DSN
 
 
-engine = sq.create_engine(DSN)
+engine = sq.create_engine(get_DSN())
 
 Session = sessionmaker(bind=engine)
 session = Session()

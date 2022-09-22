@@ -10,7 +10,7 @@ class Publisher(Base):
     id = sq.Column(sq.Integer, primary_key=True)
     name = sq.Column(sq.String(length=40), unique=True, nullable=False)
 
-    book = relationship("Book", back_populates="publisher")
+    books = relationship("Book", back_populates="publisher")
 
 class Book(Base):
     __tablename__ = 'book'
@@ -19,7 +19,7 @@ class Book(Base):
     title = sq.Column(sq.String(length=40), unique=True, nullable=False)
     id_publisher = sq.Column(sq.Integer, sq.ForeignKey("publisher.id"), nullable=False)
 
-    publisher = relationship(Publisher, back_populates="book")
+    publisher = relationship(Publisher, back_populates="books")
     stock = relationship("Stock", back_populates="book")
 
 class Shop(Base):
